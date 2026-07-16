@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://erp.example.com/products">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:getProductRequest>
+         <prod:sku>TEST-001</prod:sku>
+      </prod:getProductRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
