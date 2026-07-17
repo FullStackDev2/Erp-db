@@ -1,15 +1,22 @@
 package com.erp.user.entity;
 
-import com.erp.common.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class User {
+
+    @Id
+    @GeneratedValue
+    private UUID id;
 
     @Column(nullable = false, unique = true, length = 100)
     private String username;
@@ -20,9 +27,30 @@ public class User extends BaseEntity {
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
-    @Column(nullable = false, length = 50)
-    private String role;
+    @Column(nullable = false)
+    @Builder.Default
+    private String role = "ROLE_USER";
 
     @Column(name = "is_active", nullable = false)
-    private boolean active = true;
+    @Builder.Default
+    private Boolean active = true;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
+
+    @PrePersist
+    public void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+
+    @PreUpdate
+    public void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 }
