@@ -45,6 +45,16 @@ public class OrderController {
         return toResponseDto(order);
     }
 
+      @PostMapping("/{id}/confirm")
+    public OrderResponseDto confirm(@PathVariable UUID id) {
+        return toResponseDto(orderService.confirmOrder(id));
+    }
+
+    @PostMapping("/{id}/cancel")
+    public OrderResponseDto cancel(@PathVariable UUID id) {
+        return toResponseDto(orderService.cancelOrder(id));
+    }
+
     private OrderResponseDto toResponseDto(Order order) {
         OrderResponseDto dto = new OrderResponseDto();
         dto.setId(order.getId());

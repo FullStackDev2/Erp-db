@@ -2,6 +2,14 @@
 
 Kurumsal Kaynak Planlama (ERP) sistemi - Java/Spring Boot + PostgreSQL + REST + SOAP
 
+## 🚀 Canlı Demo
+
+- **API:** https://erp-project-7q64.onrender.com
+- **Swagger UI:** https://erp-project-7q64.onrender.com/swagger-ui/index.html
+- **SOAP WSDL:** https://erp-project-7q64.onrender.com/ws/products.wsdl
+
+> Not: Render'ın ücretsiz planında servis bir süre trafik almazsa uyku moduna geçer, ilk istek 30-60 saniye sürebilir.
+
 ## Modüller
 
 - **user** — kullanıcı yönetimi & JWT auth

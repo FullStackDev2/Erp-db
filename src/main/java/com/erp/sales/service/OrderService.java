@@ -79,4 +79,37 @@ public class OrderService {
     public List<Order> findAll() {
         return orderRepository.findAll();
     }
+
+    @Transactional
+    public Order confirmOrder(UUID orderId) {
+        Order order = findById(orderId);
+
+        if (!"PENDING".equals(order.getStatus())) {
+            throw new IllegalArgumentException(
+                    "Sadece PENDING durumundaki siparişler onaylanabilir. Mevcut durum: " + order.getStatus());
+        }
+
+        order.setStatus("CONFIRMED");
+        return orderRepository.save(order);
+    }
+
+    @Transactional
+    public Order cancelOrder(UUID orderId) {
+        Order order = findById(orderId);
+
+        if (!"PENDING".equals(order.getStatus())) {
+            throw new IllegalArgumentException(
+                    "Sadece PENDING durumundaki siparişler iptal edilebilir. Mevcut durum: " + order.getStatus());
+        }
+
+        // İptal edilince stok geri iade edilmeli
+        for (OrderItem item : order.getItems()) {
+            Product product = item.getProduct();
+            product.setStockQuantity(product.getStockQuantity() + item.getQuantity());
+            productRepository.save(product);
+        }
+
+        order.setStatus("CANCELLED");
+        return orderRepository.save(order);
+    }
 }
