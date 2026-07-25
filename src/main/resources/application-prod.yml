@@ -11,6 +11,9 @@ spring:
   jpa:
     show-sql: false
 
+  flyway:
+    ignore-migration-patterns: '*:missing'
+
 logging:
   level:
     com.erp: INFO

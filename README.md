@@ -56,3 +56,7 @@ mvn spring-boot:run
   `products.xsd`'den `mvn generate-sources` ile otomatik üretilir.
 - Şema değişiklikleri Flyway migration dosyalarıyla yönetilir, `ddl-auto: validate`
   olduğu için Hibernate şema oluşturmaz, sadece doğrular.
+
+***REMOVED***
+
+***REMOVED***
