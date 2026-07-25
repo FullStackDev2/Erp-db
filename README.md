@@ -57,6 +57,6 @@ mvn spring-boot:run
 - Şema değişiklikleri Flyway migration dosyalarıyla yönetilir, `ddl-auto: validate`
   olduğu için Hibernate şema oluşturmaz, sadece doğrular.
 
-***REMOVED***
+# Internal: postgresql://<user>:<password>@<internal-host>/<db>  (bkz. Render Dashboard > Connect)
 
-***REMOVED***
+# External: postgresql://<user>:<password>@<external-host>/<db>  (bkz. Render Dashboard > Connect)
